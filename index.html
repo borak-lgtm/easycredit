@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayGo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Easy Credit</h1>
+            <p>Llogarit kreditë dhe ndiq pagesat</p>
+        </header>
+        
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="calculator">🏠</button>
+            <button class="tab-btn" data-tab="add">Shto Transaksionin</button>
+            <button class="tab-btn" data-tab="transactions">Lista e transaksioneve</button>
+        </nav>
+
+        <!-- Calculator Section -->
+        <section id="calculator" class="tab-content active">
+            <div class="card">
+                <h2>Llogarit Kredinë</h2>
+                <form id="calcForm">
+                    <div class="form-group">
+                        <label for="amount">Vlera e kredisë ($)</label>
+                        <input type="number" id="amount" placeholder="50000" required min="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rate">Norma e Interesit (%)</label>
+                        <input type="number" id="rate" placeholder="5.5" step="0.01" required min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="years">Periudha e Kredisë (Vite)</label>
+                        <input type="number" id="years" placeholder="15" required min="1">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Llogarit</button>
+                </form>
+                
+                <div id="result" class="result-panel">
+                    <h3>Rezultatet</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <span class="label">Pagesat Mujore</span>
+                            <span class="value" id="monthlyPayment">$0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Pagesa Totale</span>
+                            <span class="value" id="totalPayment">$0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Shuma e Interesit</span>
+                            <span class="value" id="totalInterest">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Transaction Section -->
+        <section id="add" class="tab-content">
+            <div class="card">
+                <h2>Ruaj Transaksionin</h2>
+                <form id="addForm">
+                    <div class="form-group">
+                        <label for="addAmount">Vlera e Kredisë ($)</label>
+                        <input type="number" id="addAmount" placeholder="50000" required min="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="addRate">Norma e Interesit (%)</label>
+                        <input type="number" id="addRate" placeholder="5.5" step="0.01" required min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addYears">Periudha e Kredisë (Vite)</label>
+                        <input type="number" id="addYears" placeholder="15" required min="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loanType">Lloji i Kredisë</label>
+                        <select id="loanType">
+                            <option value="Personale">Kredi personale</option>
+                            <option value="Hipotekë">Hipotekë</option>
+                            <option value="Auto">Kredi Automjeti</option>
+                            <option value="Student">Kredi Studenti</option>
+                            <option value="Biznes">Kredi Biznesi</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Përshkrim (Opsional)</label>
+                        <textarea id="notes" placeholder="Add notes..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Ruaj Transaksionin</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- All Transactions Section -->
+        <section id="transactions" class="tab-content">
+            <div class="card">
+                <div class="header-row">
+                    <h2>Lista e Transaksioneve</h2>
+                    <button class="btn btn-small" onclick="clearAll()">Fshi të gjithë</button>
+                </div>
+                <div id="transactionList"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
